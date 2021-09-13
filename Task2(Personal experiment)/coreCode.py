@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[60]:
+# In[1]:
 
 
 import numpy
@@ -13,7 +13,7 @@ import os
 
 # # 第0步
 
-# In[131]:
+# In[2]:
 
 
 def get_letter(path, letter=[]):
@@ -30,26 +30,26 @@ def get_letter(path, letter=[]):
                 letter_dic[s] += 1
                 count_en += 1
     letter = sorted(letter_dic.items(), key=lambda e:e[1], reverse=True)
-    return letter
+    return letter, count_en
 
 
-# In[135]:
+# In[3]:
 
 
 def zero_one(path):
-    letter = get_letter(path)
+    letter, count_en = get_letter(path)
     for x in letter:
         print(x[0]+':'+str(x[1]/count_en))
 
 
-# In[136]:
+# In[4]:
 
 
 # test
 zero_one("C:/Users/柠檬/Desktop/test/one.txt")
 
 
-# In[137]:
+# In[5]:
 
 
 if sys.argv[0] == '-c' and len(sys.argv) == 2:
@@ -58,35 +58,9 @@ if sys.argv[0] == '-c' and len(sys.argv) == 2:
 
 # # 第一步
 
-# In[54]:
-
-
-word_dic = {}
-for line in lines:
-    s = re.split(r'\W+',line)
-    s = [word.lower() for word in s if len(word) > 0]
-    for x in s:
-        if x not in word_dic:
-            word_dic[x] = 0
-        word_dic[x] += 1
-
-
-# In[55]:
-
-
-word_dic
-
-
-# In[57]:
-
-
-word = sorted(word_dic.items(), key=lambda e:e[1], reverse=True)
-word
-
-
 # ## 功能1
 
-# In[110]:
+# In[6]:
 
 
 def get_word(path): #return one list
@@ -112,14 +86,14 @@ def one_one(path):
     print('\n')
 
 
-# In[112]:
+# In[7]:
 
 
 # test
 one_one("C:/Users/柠檬/Desktop/test/one.txt")
 
 
-# In[113]:
+# In[8]:
 
 
 # 调用
@@ -129,7 +103,7 @@ if sys.argv[0] == '-f':
 
 # ## 功能2
 
-# In[114]:
+# In[9]:
 
 
 def get_file(root_path,_files=[]):
@@ -161,21 +135,21 @@ def one_two_two(root_path):
         one_one(path)  
 
 
-# In[115]:
+# In[10]:
 
 
 # test
 one_two_one("C:/Users/柠檬/Desktop/test")
 
 
-# In[116]:
+# In[11]:
 
 
 # test
 one_two_two("C:/Users/柠檬/Desktop/test")
 
 
-# In[117]:
+# In[12]:
 
 
 # 调用
@@ -190,7 +164,7 @@ if sys.argv[0] == '-d':
 
 # ## 功能3
 
-# In[126]:
+# In[13]:
 
 
 def one_three(path, n=None):
@@ -203,21 +177,21 @@ def one_three(path, n=None):
             print(word[i][0]+':'+str(word[i][1]))
 
 
-# In[127]:
+# In[14]:
 
 
 # test
 one_three("C:/Users/柠檬/Desktop/test/one.txt")
 
 
-# In[128]:
+# In[15]:
 
 
 # test
 one_three("C:/Users/柠檬/Desktop/test/one.txt",10)
 
 
-# In[129]:
+# In[16]:
 
 
 # 调用
