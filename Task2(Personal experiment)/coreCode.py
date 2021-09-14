@@ -69,6 +69,7 @@ def get_word(path): #return one list
     f.close()
     
     word_dic = {}
+    count_en = 0
     for line in lines:
         s = re.split(r'\W+',line)
         s = [word.lower() for word in s if len(word) > 0]
@@ -76,11 +77,12 @@ def get_word(path): #return one list
             if x not in word_dic:
                 word_dic[x] = 0
             word_dic[x] += 1
+            count_en += 1
     word = sorted(word_dic.items(), key=lambda e:e[1], reverse=True)
-    return word
+    return word, count_en
 
 def one_one(path):
-    word = get_word(path)
+    word, _ = get_word(path)
     for x in word:
         print(x[0],end=' ')
     print('\n')
@@ -168,13 +170,13 @@ if sys.argv[0] == '-d':
 
 
 def one_three(path, n=None):
-    word = get_word(path)
+    word, count_en = get_word(path)
     if n == None:        
         for x in word:
-            print(x[0]+':'+str(x[1]))
+            print(x[0]+':'+str(x[1]/count_en))
     else:
         for i in range(n):
-            print(word[i][0]+':'+str(word[i][1]))
+            print(word[i][0]+':'+str(word[i][1]/count_en))
 
 
 # In[14]:
@@ -204,6 +206,109 @@ if sys.argv[0] == '-n':
 
 
 # # 第二步
+
+# ## 功能4
+
+# In[17]:
+
+
+def get_wordstop(stopword_path):
+    return get_word(stopword_path) 
+    
+def get_skipedword(stopword_path, path):
+    word, count_en = get_word(stopword_path)
+    wordstop, _ = get_wordstop(path)
+    skipedword = []
+    for x in word:
+        if x[0] in word[:][0]:
+            count_en -= 1
+            continue
+        skipedword.append(x)
+    return skipedword, count_en
+
+def two_four(stopword_path, path):
+    wordstop, count_en = get_skipedword(stopword_path, path)
+    for x in wordstop:
+        print(x[0], end = ' ')
+
+
+# In[18]:
+
+
+# test
+two_four(r"C:\Users\柠檬\Desktop\test\stopwords_en.txt",r"C:\Users\柠檬\Desktop\test\one.txt")
+
+
+# In[19]:
+
+
+# 调用
+if sys.argv[0] == '-n' and len(sys.argv) == 4:
+    stopword_path = sys.argv[1] 
+    path = sys.argv[3]
+    two_four(stopword_path, path)
+
+
+# # 第3步
+
+# ## 功能5
+
+# In[20]:
+
+
+# pip install -U textblob
+# python -m textblob.download_corpora
+from textblob import TextBlob
+
+
+# In[21]:
+
+
+def get_phrase(path, n, phrase=[]):
+    with open(path, 'r', encoding='gb18030', errors='ignore') as f:
+        lines = f.readlines()
+    f.close()
+    
+    phrase_dic = {}
+    count_en = 0
+    for line in lines:
+        blob = TextBlob(line)
+        for x in blob.noun_phrases:
+            s = re.split(r'\W+',x)
+            s = [word.lower() for word in s if len(word) > 0]
+            if len(s) != n:
+                continue
+            if x not in phrase_dic:
+                phrase_dic[x] = 0
+            phrase_dic[x] += 1
+            count_en += 1
+    phrase = sorted(phrase_dic.items(), key=lambda e:e[1], reverse=True)
+    return phrase, count_en
+
+def three_five(path, n):
+    phrase, count_en = get_phrase(path, n)
+    for x in phrase:
+        print(x[0]+':'+str(x[1]/count_en))
+
+
+# In[22]:
+
+
+# test
+three_five("C:/Users/柠檬/Desktop/test/one.txt", 2)
+
+
+# In[23]:
+
+
+# 调用
+if sys.argv[0] == '-n' and len(sys.argv) == 2:
+    two_four(sys.argv[0], sys.argv[1])
+
+
+# # 第四步
+
+# ## 功能6
 
 # In[ ]:
 
