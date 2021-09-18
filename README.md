@@ -12,9 +12,15 @@ main.exe -help
 
 
 wf.exe -c \<file name>  --输出文件中某个英文文本文件中 26 字母出现的频率
+
 wf.exe -f \<file name>  --输出文件中所有不重复的单词
+
 wf.exe -d \<directory name>  --输出指定文件目录下每一个文件中所有不重复的单词
+
 wf.exe -d -s \<directory name>  --输出指定文件目录下每一个文件中所有不重复的单词
+
 wf.exe \<file name> -n  --输出文件中的前 N 个最常出现的英语单词(如果不指定 N ,则输出所有英语单词)
+
 wf.exe -p \<file name> \<number>  --输出文件中英语词组(nlp实现，如果文件过大，需要稍微等待)
+
 wf.exe -v \<file name>  --输出文件中英语单词原型(nlp实现，如果文件过大，需要稍微等待)
