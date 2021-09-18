@@ -6,6 +6,7 @@ import string
 import sys
 import re
 import os
+
 # nlp
 # pip install -U textblob
 # python -m textblob.download_corpora
@@ -36,11 +37,7 @@ def get_letter(path, letter=[]):
 def zero_one(path):
     letter, count_en = get_letter(path)
     for x in letter:
-        print(x[0] + ':' + str(x[1] / count_en))
-
-
-if sys.argv[1] == '-c' and len(sys.argv) == 3:
-    zero_one(sys.argv[2])
+        print(x[0] + ':' + str(x[1] / count_en * 100) + '%')
 
 
 # # 第一步
@@ -114,12 +111,12 @@ def one_two_two(root_path):
 
 def one_three(path, n=None):
     word, count_en = get_word(path)
-    if n == None:
+    if n is None:
         for x in word:
-            print(x[0] + ':' + str(x[1] / count_en))
+            print(x[0] + ':' + str(x[1] / count_en * 100) + '%')
     else:
         for i in range(n):
-            print(word[i][0] + ':' + str(word[i][1] / count_en))
+            print(word[i][0] + ':' + str(word[i][1] / count_en * 100) + '%')
 
 
 # # 第二步
@@ -147,13 +144,6 @@ def two_four(stopword_path, path):
     wordstop, count_en = get_skipedword(stopword_path, path)
     for x in wordstop:
         print(x[0], end=' ')
-
-
-# 调用
-if sys.argv[0] == '-x' and len(sys.argv) == 4:
-    stopword_path = sys.argv[1]
-    path = sys.argv[3]
-    two_four(stopword_path, path)
 
 
 # # 第3步
@@ -186,12 +176,7 @@ def get_phrase(path, n, phrase=[]):
 def three_five(path, n):
     phrase, count_en = get_phrase(path, n)
     for x in phrase:
-        print(x[0] + ':' + str(x[1] / count_en))
-
-
-# 调用
-if sys.argv[0] == '-p' and len(sys.argv) == 3:
-    three_five(sys.argv[1], sys.argv[2])
+        print(x[0] + ':' + str(x[1] / count_en * 100) + '%')
 
 
 # # 第四步
@@ -215,12 +200,7 @@ def get_prototype(path, prototype=[]):
 def four_six(path):
     prototype, count_en = get_prototype(path)
     for x in prototype:
-        print(x[0] + ':' + str(x[1] / count_en))
-
-
-# 调用
-if sys.argv[0] == '-v' and len(sys.argv) == 2:
-    two_four(sys.argv[1])
+        print(x[0] + ':' + str(x[1] / count_en * 100) + '%')
 
 
 def transfer():
@@ -254,13 +234,13 @@ def transfer():
         print("输出文件中英语单词原型(nlp实现，如果文件过大，需要稍微等待)")
         four_six(sys.argv[2])
     elif sys.argv[1] == '-help' and len(sys.argv) == 2:
-        print("wf.exe -c <file name>  --输出文件中某个英文文本文件中 26 字母出现的频率")
-        print("wf.exe -f <file name>  --输出文件中所有不重复的单词")
-        print("wf.exe -d <directory name>  --输出指定文件目录下每一个文件中所有不重复的单词")
-        print("wf.exe -d -s <directory name>  --输出指定文件目录下每一个文件中所有不重复的单词")
-        print("wf.exe -n  --输出文件中的前 N 个最常出现的英语单词(如果不指定 N ,则输出所有英语单词)")
-        print("wf.exe -p <file name> <number>  --输出文件中英语词组(nlp实现，如果文件过大，需要稍微等待)")
-        print("wf.exe -v <file name>  --输出文件中英语单词原型(nlp实现，如果文件过大，需要稍微等待)")
+        print("main.exe -c <file name>  --输出文件中某个英文文本文件中 26 字母出现的频率")
+        print("main.exe -f <file name>  --输出文件中所有不重复的单词")
+        print("main.exe -d <directory name>  --输出指定文件目录下每一个文件中所有不重复的单词")
+        print("main.exe -d -s <directory name>  --输出指定文件目录下每一个文件中所有不重复的单词")
+        print("main.exe -n <file name> <number>  --输出文件中的前 N 个最常出现的英语单词(如果不指定 N ,则输出所有英语单词)")
+        print("main.exe -p <file name> <number>  --输出文件中英语词组(nlp实现，如果文件过大，需要稍微等待)")
+        print("main.exe -v <file name>  --输出文件中英语单词原型(nlp实现，如果文件过大，需要稍微等待)")
     else:
         print("输入参数错误！请重新输入(-help查看帮助文档)")
 
