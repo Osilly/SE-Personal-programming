@@ -19,7 +19,7 @@ wf.exe -d \<directory name>  --输出指定文件目录下每一个文件中所�
 
 wf.exe -d -s \<directory name>  --输出指定文件目录下每一个文件中所有不重复的单词
 
-wf.exe \<file name> -n  --输出文件中的前 N 个最常出现的英语单词(如果不指定 N ,则输出所有英语单词)
+wf.exe  -n  \<file name> \<number>--输出文件中的前 N 个最常出现的英语单词(如果不指定 N ,则输出所有英语单词)
 
 wf.exe -p \<file name> \<number>  --输出文件中英语词组(nlp实现，如果文件过大，需要稍微等待)
 
