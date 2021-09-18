@@ -1,4 +1,5 @@
-('D:\\软件工程\\main\\build\\main\\PKG-00.pkg',
+('D:\\Github\\SE-Personal-programming\\Task2(Personal '
+ 'experiment)\\main\\build\\main\\PKG-00.pkg',
  {'BINARY': 1,
   'DATA': 1,
   'EXECUTABLE': 1,
@@ -7,7 +8,10 @@
   'PYSOURCE': 1,
   'PYZ': 0,
   'SPLASH': 1},
- [('PYZ-00.pyz', 'D:\\软件工程\\main\\build\\main\\PYZ-00.pyz', 'PYZ'),
+ [('PYZ-00.pyz',
+   'D:\\Github\\SE-Personal-programming\\Task2(Personal '
+   'experiment)\\main\\build\\main\\PYZ-00.pyz',
+   'PYZ'),
   ('struct', 'D:\\Anaconda\\envs\\temporary\\lib\\struct.pyo', 'PYMODULE'),
   ('pyimod01_os_path',
    'D:\\Anaconda\\envs\\temporary\\lib\\site-packages\\PyInstaller\\loader\\pyimod01_os_path.pyc',
@@ -42,9 +46,13 @@
   ('pyi_rth_pkgres',
    'D:\\Anaconda\\envs\\temporary\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
    'PYSOURCE'),
-  ('main', 'D:\\软件工程\\main\\main.py', 'PYSOURCE'),
+  ('main',
+   'D:\\Github\\SE-Personal-programming\\Task2(Personal '
+   'experiment)\\main\\main.py',
+   'PYSOURCE'),
   ('main.exe.manifest',
-   'D:\\软件工程\\main\\build\\main\\main.exe.manifest',
+   'D:\\Github\\SE-Personal-programming\\Task2(Personal '
+   'experiment)\\main\\build\\main\\main.exe.manifest',
    'BINARY')],
  True,
  False,
