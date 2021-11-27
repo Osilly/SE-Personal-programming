@@ -28,3 +28,7 @@ UML用例图（Visio）
 
 顺序图、协作图和VOPC图（Powerdesigner）
 
+### 实验七
+
+桥接模式（Powerdesigner+Java）
+
